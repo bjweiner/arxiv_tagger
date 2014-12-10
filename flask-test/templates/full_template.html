@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title> {{ mytitle }} </title>
+</head>
+
+<script language="JavaScript">
+    function add_tag(form) {
+      var pid = form.id.value
+      var tag = form.tag.value
+    }
+    function read_tagbox(form) {
+      var pid = form.id.value
+      var tagbox = form.tagbox.value
+    }
+    function return_tagbox(str) {
+      foo = document.getElementById(str) ;
+      idstring = foo.id ;
+      valstring = foo.value ; 
+      idtagstring = idstring + " " + valstring ;
+      return(idtagstring) ;
+    }
+    function writetextarea(form, str) {
+      old = form.myarea.value ;
+      if (old=='') {form.myarea.value = str} else {form.myarea.value = old + "\n" + str} ;
+    }
+    function readandwrite(form, idstr) {
+      tagstr = return_tagbox(idstr) ;
+      writetextarea(form, tagstr) ;
+    }
+</script><p>
+
+<body>
+<h2> {{ myheading }} </h2>
+<p>
+<form action="/tags" method="post">
+
+{{ mainbody | safe }}
+<p>
+
+<textarea style="font-size:12pt" name="myarea" cols="60"
+rows="12"></textarea>
+<br>
+<input style="font-size:24pt" type="submit" value="Save these tags">
+<p>
+
+<!-- {{ mainbody | safe }} -->
+
+</form>
+
+<hr>
+<!-- <address></address> -->
+<!-- hhmts start --> Last modified: Tue Dec  9 22:33:12 CST 2014 <!-- hhmts end -->
+</body> </html>
