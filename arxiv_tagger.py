@@ -11,8 +11,10 @@ Initial version BJW, Jan 5 2014  """
 
 import sys
 import feedparser
-import commands
+# import commands
+import subprocess
 import re
+import webbrowser
 
 def read_tags(tagfile) :
     tagnames = []
@@ -298,12 +300,21 @@ def list_jscript_entry_textbox(paperid) :
 def spawn_browser(pagename, taggedfile) :
     # Here we would initiate a browser pointing at the local file given by pagename
     # print 'Point your browser to ', pagename, ' until this can be auto-started'
-    browserloc = '/Applications/Google\ Chrome.app'
-    cmd = 'open ' + browserloc + ' ' + pagename
-    (status, output) = commands.getstatusoutput(cmd)
-    if status :
-        sys.stderr.write(output)
-        sys.exit(1)
+    # browserloc = '/Applications/Google\ Chrome.app'
+    # browserloc = ''
+    # cmd = 'open ' + browserloc + ' ' + pagename
+    if sys.platform == 'darwin':
+        subprocess.Popen(['open', pagename])
+    else:
+        try:
+            webbrowser.open(pagename, new=2)
+        except:
+            print "Please open a browser on ",pagename
+    # (status, output) = commands.getstatusoutput(cmd)
+    # if status :
+    #    sys.stderr.write(output)
+    #    print "Please open a browser on ",pagename
+    #    sys.exit(1)
     # prompt for text input to pause until the output file is written
     foo = raw_input('Hit return to continue once you finish tagging: ')
     return
