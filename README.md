@@ -18,3 +18,9 @@ papers will look like "The black hole - bulge mass relation revisited in the era
 correctly handles titles that end with punctuation. It is named after the game where everyone
 at the table opens their fortune cookies and reads them, adding "in bed" as a suffix.
 
+To run the code, download it and install feedparser:
+pip install feedparser
+python arxiv_fortune_cookie.py
+
+This should create a local webpage and open a web browser on it.
+
