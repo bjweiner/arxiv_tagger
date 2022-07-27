@@ -352,7 +352,9 @@ def print_tagged(tagdict) :
 def main() :
     tagfile = 'arxiv_tagnames.txt'
     taggedfile = 'arxiv_tagged.txt'
-    feedurl = 'http://arxiv.org/rss/astro-ph'
+    # old location
+    # feedurl = 'http://arxiv.org/rss/astro-ph'
+    feedurl = 'http://export.arxiv.org/rss/astro-ph'
     # for testing
     localfeedurl = 'file:///Users/bjw/programs/arxiv_parser/astro-ph.rss.2014jan03'
     # comment next line out to use the real feed, not local
