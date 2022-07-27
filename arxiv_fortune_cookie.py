@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 """ read from the arxiv search API or RSS feed
 read a list of tag names from a text file
@@ -36,15 +36,15 @@ def read_tags(tagfile) :
              #             tagnames.append(l)
         l = f.readline()
     f.close()
-    print 'Read tag names'
-    print tagnames
+    print('Read tag names')
+    print(tagnames)
     return tagnames
 
 # This returns a dictionary.  feed.entries has the info for each paper
 def read_feed(feedurl) :
     feed = feedparser.parse(feedurl)
     num = len(feed.entries)
-    print 'Read a feed with', num, ' entries'
+    print('Read a feed with', num, ' entries')
     return feed
 
 # create a webpage showing the feed and with javascript or something
@@ -173,7 +173,7 @@ def trim_entries(feed) :
         match2 = re.search(r'UPDATED\)$',p.title_detail.value)
         if (match1 and not match2) : trimmed_entries.append(p)
     trimfeed.entries = trimmed_entries
-    print 'Trimmed to ',len(trimfeed.entries),' new astro-ph entries'
+    print('Trimmed to ',len(trimfeed.entries),' new astro-ph entries')
     return trimfeed
 
 # Print html entry for one paper
@@ -314,11 +314,11 @@ def spawn_browser(pagename, taggedfile) :
         try:
             webbrowser.open(pagename, new=2)
         except:
-            print "Please open a browser on ",pagename
+            print("Please open a browser on ",pagename)
     # (status, output) = commands.getstatusoutput(cmd)
     # if status :
     #    sys.stderr.write(output)
-    #    print "Please open a browser on ",pagename
+    #    print("Please open a browser on ",pagename)
     #    sys.exit(1)
     # prompt for text input to pause until the output file is written
     # foo = raw_input('Hit return to continue once you finish tagging: ')
@@ -346,7 +346,7 @@ def make_tagged_dict(taggedfile) :
 def print_tagged(tagdict) :
     pids = sorted(tagdict.keys())
     for p in pids: 
-        print p, tagdict[p]
+        print(p, tagdict[p])
     return
     
 def main() :
@@ -355,9 +355,8 @@ def main() :
     # old location
     # feedurl = 'http://arxiv.org/rss/astro-ph'
     feedurl = 'http://export.arxiv.org/rss/astro-ph'
-    # for testing
-    localfeedurl = 'file:///Users/bjw/programs/arxiv_parser/astro-ph.rss.2014jan03'
-    # comment next line out to use the real feed, not local
+    # for testing, uncomment these lines to use a local file`
+    # localfeedurl = 'file:///Users/bjw/programs/arxiv_parser/astro-ph.rss.2014jan03'
     # feedurl = localfeedurl
     pagename = 'arxiv_tagging.html'
     
