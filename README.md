@@ -1,7 +1,7 @@
 # arxiv_tagger
 Code for parsing the astro-ph arxiv feed and adding tags to articles
 
-The arxiv_tagger codereads the arXiv astro-ph rss feed and reparses it into a web page that
+The arxiv_tagger code reads the arXiv astro-ph rss feed and reparses it into a web page that
 uses some javascript to allow you to type in keywords for any abstracts you are interested in.
 The abstract ID/url and the keywords appear in a text box at the top of the page. The intent
 of this was to export the keywords to some external database, so that you could read astro-ph
@@ -19,7 +19,9 @@ correctly handles titles that end with punctuation. It is named after the game w
 at the table opens their fortune cookies and reads them, adding "in bed" as a suffix.
 
 To run the code, download it and install feedparser:
-pip install feedparser
+
+pip install feedparser 
+
 python arxiv_fortune_cookie.py
 
 This should create a local webpage and open a web browser on it.
